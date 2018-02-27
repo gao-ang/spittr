@@ -3,6 +3,7 @@ package gasyz.config;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 /**
+ * 配置DispatcherServlet
  * Created by gaoang on 2018/2/26.
  */
 public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
