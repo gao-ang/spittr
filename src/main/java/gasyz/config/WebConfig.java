@@ -18,7 +18,7 @@ import java.util.List;
  */
 @Configuration
 @EnableWebMvc//启用Spring MVC
-@ComponentScan("gasyz")//启用组件扫描
+@ComponentScan("gasyz.*")//启用组件扫描
 public class WebConfig extends WebMvcConfigurerAdapter{
 
     /**
