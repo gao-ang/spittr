@@ -12,6 +12,8 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 
+import java.util.Properties;
+
 /**
  * Created by gaoang on 2018/3/2.
  */
@@ -36,7 +38,7 @@ public class SpringDBConfig {
         HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
         adapter.setDatabase(Database.MYSQL);
         adapter.setShowSql(true);
-        adapter.setGenerateDdl(false);
+        adapter.setGenerateDdl(true);
         adapter.setDatabasePlatform("org.hibernate.dialect.MySQL5Dialect");
         return adapter;
     }
@@ -44,6 +46,9 @@ public class SpringDBConfig {
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean emfb = new LocalContainerEntityManagerFactoryBean();
+        Properties jpaProperties = new Properties();
+        jpaProperties.setProperty("ImplicitNamingStrategy","org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyHbmImpl");
+        emfb.setJpaProperties(jpaProperties);
         emfb.setDataSource(dataSource());
         emfb.setJpaVendorAdapter(jpaVendorAdapter());
         emfb.setPackagesToScan("gasyz.spittr.domain");
@@ -55,9 +60,9 @@ public class SpringDBConfig {
         return new JpaTransactionManager(entityManagerFactory().getObject());
     }
 
-    /*@Bean
+    @Bean
     public BeanPostProcessor persistenceTranslation() {
         return new PersistenceExceptionTranslationPostProcessor();
-    }*/
+    }
 
 }
