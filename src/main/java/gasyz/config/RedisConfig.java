@@ -1,8 +1,6 @@
 package gasyz.config;
 
-import gasyz.common.redis.RedisClient;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.connection.RedisPassword;
@@ -18,7 +16,6 @@ import redis.clients.jedis.JedisPoolConfig;
  * Created by gaoang on 2018/3/12.
  */
 @Configuration
-@ComponentScan(basePackages = {"gasyz.common.*"})
 public class RedisConfig {
 
     @Bean

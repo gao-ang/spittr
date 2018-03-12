@@ -1,7 +1,6 @@
 package gasyz.common.redis;
 
 import com.alibaba.fastjson.JSON;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 
@@ -14,7 +13,6 @@ import java.util.concurrent.TimeUnit;
 @Component
 public class RedisClient implements IRedis {
 
-    @Autowired//或者在配置文件中注入
     private StringRedisTemplate stringRedisTemplate;
 
     public RedisClient(StringRedisTemplate stringRedisTemplate) {
