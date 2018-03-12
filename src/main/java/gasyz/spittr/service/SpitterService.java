@@ -1,5 +1,6 @@
 package gasyz.spittr.service;
 
+import gasyz.common.redis.RedisClient;
 import gasyz.spittr.domain.OrderRecord;
 import gasyz.spittr.domain.Spitter;
 import gasyz.spittr.domain.SpitterOrder;
@@ -21,6 +22,8 @@ public class SpitterService {
     private SpitterRepository spitterRepository;
     @Autowired
     private JpaRepository<Spitter,Long> jpaRepository;
+    @Autowired
+    private RedisClient redisClient;
 
 
     public List<Spitter> findAll() {
@@ -32,5 +35,11 @@ public class SpitterService {
         String orderName = spitterOrders.get(0).getOrderName();
         Integer integer = spitterRepository.eliteSweep();
         return all;
+    }
+
+    public void saveRedis() {
+        redisClient.setString("a","测试");
+        String a = redisClient.getString("a");
+        System.out.println(a);
     }
 }

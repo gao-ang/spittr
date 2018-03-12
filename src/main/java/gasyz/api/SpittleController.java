@@ -34,4 +34,10 @@ public class SpittleController {
         List<Spitter> all = spitterService.findAll();
         return new CommonResponse(Code.SUCCESS,"所有数据",all);
     }
+
+    @RequestMapping("/saveRedis")
+    public Object saveRedis() {
+        spitterService.saveRedis();
+        return null;
+    }
 }
